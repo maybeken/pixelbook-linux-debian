@@ -1,11 +1,4 @@
 ---
- ### blacklist intel sound module (required for audio)
-- name: Copy module blacklist file
-  become: true
-  copy:
-    src: modprobe-blacklist.conf
-    dest: /lib/modprobe.d/eve-blacklist.conf
-
 ### Enable zram swap
 - name: Copy zram setup script
   become: true
