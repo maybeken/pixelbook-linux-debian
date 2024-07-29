@@ -1,3 +1,9 @@
+# Updates to the original solution
+
+The current repo contains a more modern solution to install Linux (specifically Debian-based distros) using modern solutions provided by the open source community and currated by me by trial-and-error with different solutions and debugging on my own Pixelbook Go. Kudos to the big help from this [repo](https://github.com/mateowoetam/tuxelbookgoscript) by @mateowoetam and all the good works from @WeirdTreeThing.
+
+*Note: When you are running Debian, my suggestion is to run your desktop with Xserver instead of wayland due to some compatibility issues with certain function of the patches. You can, of course try running wayland but likely will suffer from graphical glitches and keymapping issues.*
+
 # Installing "real" linux on a Google Pixelbook
 
 This repo documents the process of replacing ChromeOS on a stock [Google Pixelbook][pixelbook_product_page]
