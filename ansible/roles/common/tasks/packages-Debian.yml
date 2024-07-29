@@ -8,6 +8,7 @@
       - libtool
       - python3
       - pkg-config
+      - autoconf
 
       # Needed for mounting recovery image
       - kpartx
@@ -22,5 +23,7 @@
       - libspeex-dev
       - libspeexdsp-dev
       - libasound2-dev
+      - libudev1
+      - libudev-dev
     state: latest 
 

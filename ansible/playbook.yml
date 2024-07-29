@@ -25,7 +25,7 @@
     include_role: 
       name: eve-kernel
 
-  - name: Install Chrome Audio Server and sound setup files
+  - name: Install Chrultrabook kernel and sound setup files
     include_role:
       name: eve-audio
 
