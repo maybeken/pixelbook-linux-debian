@@ -26,6 +26,12 @@
 
 ### tweak touchpad pressure for libinput
 
+- name: Ensure /etc/libinput exists
+  become: true
+  file:
+    path: /etc/libinput
+    state: directory
+
 - name: Copy libinput touchpad pressure tweak file
   become: true
   copy:
@@ -57,18 +63,12 @@
     mode: 0755
 
 
-### Map google assistant key to super
-#
-#   note: change eve_keyboard_assistant_keycode var if you want a 
-#   different keycode for the google assistant key.
-#
-#   you can also set eve_keyboard_search_keycode to remap the search
-#   key from its default of Left Super (keycode leftmeta)
-- name: Copy keyboard hwdb file to remap assistant key
+### map Chromebook specific keys to functional keyboard mappings
+- name: Copy keyboard hwdb file to remap keyboard
   become: true
   template:
-    src: 61-eve-keyboard.hwdb.j2
-    dest: /lib/udev/hwdb.d/61-eve-keyboard.hwdb
+    src: 60-keyboard.hwdb.j2
+    dest: /lib/udev/hwdb.d/60-keyboard.hwdb
     mode: 0600
     owner: root
     group: root
@@ -80,3 +80,15 @@
 - name: Trigger udev to apply keyboard rules
   become: true
   command: "udevadm trigger"
+
+## generate keyd configurations for use on Chromebooks (https://github.com/WeirdTreeThing/cros-keyboard-map)
+
+- name: clone WeirdTreeThing source
+  git:
+    repo: 'https://github.com/WeirdTreeThing/cros-keyboard-map'
+    version: "main"
+    dest: "{{ keymap_workdir }}"
+
+- name: execute installation script
+  become: true
+  command: "./install.sh"
