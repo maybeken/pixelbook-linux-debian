@@ -17,14 +17,6 @@
     include_role:
       name: common 
 
-  - name: Extract files from eve recovery image
-    include_role:
-      name: eve-recovery-files
-
-  - name: Install chromium fork of linux kernel
-    include_role: 
-      name: eve-kernel
-
   - name: Install Chrultrabook kernel and sound setup files
     include_role:
       name: eve-audio
